@@ -11,7 +11,7 @@ function run() {
     
     if(directionsWidget) {
         directionsWidget.parentElement.innerHTML = `
-            <div style="display: flex; flex-direction: column; justify-content: center; height: 100%; text-align: center; gap: 10px">
+            <div class="googleantidox-hidden-directions">
                 <div>
                     <b>Directions removed to protect your privacy.</b>
                 </div>
