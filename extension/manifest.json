@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "GoogleAntiDox",
+    "version": "1.0",
+
+    "description": "Prevents Google from leaking your location when using search.",
+
+    "content_scripts": [
+        {
+        "matches": ["*://*.google.com/*"],
+        "js": ["src/main.js"]
+        }
+    ],
+
+    "permissions": [
+        "activeTab"
+    ]
+}
