@@ -37,12 +37,6 @@ function run() {
     }
 }
 
-function removeIfExists(element) {
-    if(element) {
-        element.remove();
-    }
-}
-
 mutationObs = new MutationObserver(run);
 
 mutationObs.observe(document, {
