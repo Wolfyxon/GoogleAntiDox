@@ -1,4 +1,11 @@
+let mutationObs;
+
+let footerLocationRemoved = false;
+let directionsRemoved = false;
+
 function run() {
+    const mapsBanner = document.querySelector("*[data-ly]");
+
     // Your approximate city label on the footer
     const locationFooterLabel = document.querySelector(".unknown_loc ~ *");
 
@@ -7,6 +14,7 @@ function run() {
 
     if(locationFooterLabel) {
         locationFooterLabel.innerText = " ";
+        footerLocationRemoved = true;
     }
     
     if(directionsWidget) {
@@ -20,6 +28,12 @@ function run() {
                 </div>
             </div>
         `;
+
+        directionsRemoved = true;
+    }
+
+    if(footerLocationRemoved && (!mapsBanner || directionsRemoved)) {
+        mutationObs.disconnect();
     }
 }
 
@@ -29,22 +43,12 @@ function removeIfExists(element) {
     }
 }
 
-const observeConfig = {
+mutationObs = new MutationObserver(run);
+
+mutationObs.observe(document, {
     attributes: true, 
     childList: false,
   	subtree: true
-}
+});
 
-const footer = document.getElementById("sfooter");
-const mapsBanner = document.querySelector("*[data-ly]");
-const mutationObs = new MutationObserver(run);
-
-if(footer) {
-    mutationObs.observe(footer, observeConfig);
-}
-
-if(mapsBanner) {
-    mutationObs.observe(mapsBanner, observeConfig);
-}
-
-run();
+window.addEventListener("load", run);

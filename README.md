@@ -13,8 +13,8 @@ Should be compatible with Firefox and all Chromium-based browsers.
 ## Features
 - [x] Hiding location from the footer
 - [x] Hiding the directions widget
-- [ ] Randomizing the location
-- [ ] Hiding as soon as possible (before the page fully loads)
+- [x] Hiding immediately (before the page fully loads)
+- [ ] Random location mode
 
 ## Screenshots
 
