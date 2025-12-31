@@ -21,7 +21,7 @@ function run() {
         directionsWidget.parentElement.innerHTML = `
             <div class="googleantidox-hidden-directions">
                 <div>
-                    <b>Directions removed to protect your privacy.</b>
+                    <b>Directions hidden to protect your privacy.</b>
                 </div>
                 <div style="font-size: 80%">
                     GoogleAntiDox
