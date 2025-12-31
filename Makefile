@@ -6,6 +6,3 @@ build:
 
 clean:
 	rm -f *.xpi
-
-installFirefox: build
-	firefox `realpath $(OUTFILE)`
