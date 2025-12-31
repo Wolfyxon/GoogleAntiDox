@@ -25,8 +25,8 @@ Should be compatible with Firefox and all Chromium-based browsers.
 
 ### From an extension store
 
-**Firefox** - Soon available.
-**Chrome** - You have to install it manually. Google requires you to publicly disclose your full name and address on the Chrome Web Store and I'm not comfortable with that.
+- **Firefox** - Soon available.
+- **Chrome** - You have to install it manually. Google requires you to publicly disclose your full name and address on the Chrome Web Store and I'm not comfortable with that.
 
 ## Manual
 
