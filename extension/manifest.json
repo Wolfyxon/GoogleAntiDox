@@ -8,6 +8,17 @@
         "page": "settings/index.html"
     },
 
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "@google-anti-dox",
+            "strict_min_version": "58.0"
+        }
+    },
+
+    "permissions": [
+        "storage"
+    ],
+
     "content_scripts": [
         {
             "js": ["global/main.js"],
