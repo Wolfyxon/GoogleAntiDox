@@ -17,6 +17,8 @@ Should be compatible with Firefox and all Chromium-based browsers.
 
 ![](.github/screenshots/directions.png)
 ![](.github/screenshots/footer.png)
+![](.github/screenshots/settings.png)
+
 
 ## Installing
 
