@@ -7,12 +7,10 @@ class Settings {
         // 'typeof' doesn't throw errors with undefined identifiers
 
         if(typeof(browser) !== "undefined") { // Firefox
-            console.log("Firefox!")
             return browser.storage.sync;
         }
 
         if(typeof(chrome) !== "undefined") {
-            console.log("Chrome!")
             return chrome.storage.local;
         }
     }
@@ -23,9 +21,7 @@ class Settings {
     }
 
     static async get() {
-        console.log("get begin")
         const storage = this.getStorage();
-        console.log("storage ready, running")
         return await storage.get();
     }
 

@@ -1,6 +1,5 @@
 const radioSettings = ["level"];
 
-
 async function saveSettings() {
     const newSettings = {};
 

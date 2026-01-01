@@ -1,8 +1,6 @@
 async function main() {
-    console.log("getting settings")
     const settings = await Settings.get();
-    console.log("settings retrieved");
-    console.log(settings)
+
     let mutationObs;
     let footerLocationRemoved = false;
     let directionsRemoved = false;
