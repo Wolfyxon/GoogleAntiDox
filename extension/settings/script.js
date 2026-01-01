@@ -16,8 +16,9 @@ function saveSettings() {
         const input = document.querySelector(`input[name="${settingName}"]:checked`);
         newSettings[settingName] = input.value;
     }
-    
+
     browser.storage.sync.set(newSettings);
+    return newSettings;
 }
 
 async function loadRadios(settingName, settings) {
@@ -26,15 +27,30 @@ async function loadRadios(settingName, settings) {
     for(const radio of radios) {
         radio.checked = settings[settingName] == radio.value;
 
-        radio.addEventListener("change", saveSettings);
+        radio.addEventListener("change", () => {
+            const settings = saveSettings();
+            updateExplanations(settings);
+        });
     }
 }
 
 async function loadSettings() {
     const settings = await browser.storage.sync.get();
-
+    
     for(const setting of radioSettings) {
         loadRadios(setting, settings);
+    }
+
+    updateExplanations(settings);
+}
+
+function updateExplanations(settings) {
+    const levelExpl = document.getElementById("setting-level-explanation");
+
+    if(settings.level == "city") {
+        levelExpl.innerText = "Your approximate city will be protected but your country will still be visible. Standard protection level.";
+    } else if(settings.level == "country") {
+        levelExpl.innerText = "Both your city and country will be protected. Maximum protection level.";
     }
 }
 
