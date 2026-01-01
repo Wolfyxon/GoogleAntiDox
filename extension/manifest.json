@@ -1,7 +1,9 @@
 {
     "manifest_version": 3,
     "name": "GoogleAntiDox",
-    "description": "Prevents Google from leaking your location when using search.",
+    "description": "Prevents you from accidentally leaking your location when googling during recording, screenshare or making a screenshot.",
+    "homepage_url": "https://github.com/Wolfyxon/GoogleAntiDox",
+    "author": "Wolfyxon",
     "version": "1.1",
     
     "options_ui": {
