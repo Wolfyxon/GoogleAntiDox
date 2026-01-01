@@ -1,24 +1,15 @@
-const defaultSettings = {
-    "level": "city"
-};
-
 const radioSettings = ["level"];
 
-async function hasSettings() {
-    const keys = await browser.storage.sync.getKeys();
-    return keys.length != 0; 
-}
 
-function saveSettings() {
-    const newSettings = { ...defaultSettings };
+async function saveSettings() {
+    const newSettings = {};
 
     for(const settingName of radioSettings) {
         const input = document.querySelector(`input[name="${settingName}"]:checked`);
         newSettings[settingName] = input.value;
     }
 
-    browser.storage.sync.set(newSettings);
-    return newSettings;
+    return await Settings.merge(newSettings);
 }
 
 async function loadRadios(settingName, settings) {
@@ -27,15 +18,15 @@ async function loadRadios(settingName, settings) {
     for(const radio of radios) {
         radio.checked = settings[settingName] == radio.value;
 
-        radio.addEventListener("change", () => {
-            const settings = saveSettings();
+        radio.addEventListener("change", async () => {
+            const settings = await saveSettings();
             updateExplanations(settings);
         });
     }
 }
 
 async function loadSettings() {
-    const settings = await browser.storage.sync.get();
+    const settings = await Settings.get();
     
     for(const setting of radioSettings) {
         loadRadios(setting, settings);
@@ -55,14 +46,10 @@ function updateExplanations(settings) {
 }
 
 async function main() {
-    if(browser) {
-        if(!await hasSettings()) {
-            saveSettings();
-        }
-
+    if(Settings.getStorage()) {
         loadSettings();
     } else {
-        console.warn("'browser' not available, script is not running in extension mode. Settings won't work!");
+        console.warn("Storage not available, script is probably not running in extension mode. Settings won't work!");
     }
 }
 

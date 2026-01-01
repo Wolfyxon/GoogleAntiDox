@@ -23,8 +23,13 @@
 
     "content_scripts": [
         {
-            "js": ["global/main.js"],
-            "css": ["global/main.css"],
+            "js": [
+                "global/settings.js",
+                "global/main.js"
+            ],
+            "css": [
+                "global/main.css"
+            ],
             "run_at": "document_start",
             "matches": [
                 "*://*.google.com/search*",
