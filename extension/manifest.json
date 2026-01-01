@@ -6,8 +6,8 @@
     
     "content_scripts": [
         {
-            "js": ["js/main.js"],
-            "css": ["styles/main.css"],
+            "js": ["global/main.js"],
+            "css": ["global/main.css"],
             "run_at": "document_start",
             "matches": [
                 "*://*.google.com/search*",
