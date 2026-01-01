@@ -22,7 +22,15 @@ class Settings {
 
     static async get() {
         const storage = this.getStorage();
-        return await storage.get();
+        const settings = await storage.get();
+        
+        for(const [key, defaultValue] of DEFAULT_SETTINGS) {
+            if(settings[key] === undefined) {
+                settings[key] = defaultValue;
+            }
+        }
+
+        return settings;
     }
 
     static async overwrite(newSettings) {
