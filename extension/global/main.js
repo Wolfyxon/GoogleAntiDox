@@ -16,6 +16,9 @@ async function main() {
                 if(locationFooterLabel) {
                     locationFooterLabel.innerText = " ";
                     footerLocationRemoved = true;
+                } else if(fbar) {
+                    fbar.remove();
+                    footerLocationRemoved = true;
                 }
             } else {
                 if(fbar) {
