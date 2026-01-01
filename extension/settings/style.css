@@ -49,6 +49,7 @@ label:has(input[type="radio"]:checked) {
 
 label:has(input[type="radio"]:disabled) {
     opacity: 0.5;
+    cursor: unset;
 }
 
 input[type="radio"] {
