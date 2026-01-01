@@ -65,9 +65,7 @@ Simply archive the *extension* folder in the zip format, then change the extensi
 Structure:
 ```
 GoogleAntiDox.xpi
+|_ global
+|_ settings
 |_ manifest.json
-|_ src
-    |_ main.js
-|_ styles
-    |_ main.css
 ```
