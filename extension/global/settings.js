@@ -30,7 +30,7 @@ class Settings {
     }
 
     static async merge(newSettings) {
-        const current = this.get();
+        const current = await this.get();
 
         for(const [key, value] of Object.entries(newSettings)) {
             current[key] = value;
