@@ -6,3 +6,4 @@ build:
 
 clean:
 	rm -f *.xpi
+	rm -f *.sig
