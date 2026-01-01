@@ -7,20 +7,22 @@ async function main() {
 
     function run() {
         const mapsBanner = document.querySelector("*[data-ly]");
+        const fbar = document.querySelector(".fbar");
         const locationFooterLabel = document.querySelector(".unknown_loc ~ *");
         const directionsWidget = document.querySelector("*[data-attrid='TravelGettingThereFeedback']");
 
-        if(locationFooterLabel) {
-            if(!settings.level || settings.level == "city") {
+        if(settings.level == "city") {
+            if(locationFooterLabel) {
                 locationFooterLabel.innerText = " ";
-            } else {
-                // this can probably be done better
-                locationFooterLabel.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+                footerLocationRemoved = true;
             }
-
-            footerLocationRemoved = true;
+        } else {
+            if(fbar) {
+                fbar.remove();
+                footerLocationRemoved = true;
+            }
         }
-        
+
         if(directionsWidget) {
             directionsWidget.parentElement.innerHTML = `
                 <div class="googleantidox-hidden-directions">
