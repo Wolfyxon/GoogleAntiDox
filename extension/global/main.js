@@ -11,19 +11,21 @@ async function main() {
         const locationFooterLabel = document.querySelector(".unknown_loc ~ *");
         const directionsWidget = document.querySelector("*[data-attrid='TravelGettingThereFeedback']");
 
-        if(settings.level == "city") {
-            if(locationFooterLabel) {
-                locationFooterLabel.innerText = " ";
-                footerLocationRemoved = true;
-            }
-        } else {
-            if(fbar) {
-                fbar.remove();
-                footerLocationRemoved = true;
+        if(!footerLocationRemoved) {
+            if(settings.level == "city") {
+                if(locationFooterLabel) {
+                    locationFooterLabel.innerText = " ";
+                    footerLocationRemoved = true;
+                }
+            } else {
+                if(fbar) {
+                    fbar.remove();
+                    footerLocationRemoved = true;
+                }
             }
         }
 
-        if(directionsWidget) {
+        if(!directionsRemoved && directionsWidget) {
             directionsWidget.parentElement.innerHTML = `
                 <div class="googleantidox-hidden-directions">
                     <div>
