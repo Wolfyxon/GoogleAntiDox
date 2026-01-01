@@ -45,7 +45,7 @@ Should be compatible with Firefox and all Chromium-based browsers.
 2. Open Firefox and go to `about:debugging`
 3. Click on *This Firefox* on the left
 4. Click *Load temporary addon*
-5. Find and open the extension `.xpi` file or any file in the *extension* source code folder
+5. Find and open the extension `.xpi` file or `manifest.json` inside the `extension` folder
 6. Done
 
 ## Building
