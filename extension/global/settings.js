@@ -24,7 +24,7 @@ class Settings {
         const storage = this.getStorage();
         const settings = await storage.get();
         
-        for(const [key, defaultValue] of DEFAULT_SETTINGS) {
+        for(const [key, defaultValue] of Object.entries(DEFAULT_SETTINGS)) {
             if(settings[key] === undefined) {
                 settings[key] = defaultValue;
             }
