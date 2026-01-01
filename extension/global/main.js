@@ -7,11 +7,7 @@ async function main() {
 
     function run() {
         const mapsBanner = document.querySelector("*[data-ly]");
-
-        // Your approximate city label on the footer
         const locationFooterLabel = document.querySelector(".unknown_loc ~ *");
-
-        // When searching for towns in your country a widget with directions may appear
         const directionsWidget = document.querySelector("*[data-attrid='TravelGettingThereFeedback']");
 
         if(locationFooterLabel) {
