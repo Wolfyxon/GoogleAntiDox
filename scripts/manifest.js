@@ -1,8 +1,10 @@
 import { GOOGLE_DOMAIN_ENDS } from "./googleDomainEnds.js";
 import * as fs from "fs";
 
-const DIRECTORIES = ["search", "sorry"];
 const EXTENSION_DIR = import.meta.dirname + "/../extension";
+const MANIFEST_PATH = EXTENSION_DIR + "/manifest.json";
+
+const URL_DIRECTORIES = ["search", "sorry"];
 
 function createMatchURL(domainEnd, directory) {
     return `*://*.google.${domainEnd}/${directory}*`;
@@ -11,7 +13,7 @@ function createMatchURL(domainEnd, directory) {
 function makeMatchURLs() {
     const res = [];
 
-    for(const directory of DIRECTORIES) {
+    for(const directory of URL_DIRECTORIES) {
         for(const domainEnd of GOOGLE_DOMAIN_ENDS) {
             res.push(createMatchURL(domainEnd, directory));
         }
@@ -20,13 +22,13 @@ function makeMatchURLs() {
     return res;
 }
 
-function getManifestTemplate() {
-    const text = fs.readFileSync(import.meta.dirname + "/manifest.json");
+function getManifest() {
+    const text = fs.readFileSync(MANIFEST_PATH);
     return JSON.parse(text);
 }
 
-function makeManifest() {
-    const manifest = getManifestTemplate();
+function getUpdatedManifest() {
+    const manifest = getManifest();
     const matchURLs = makeMatchURLs();
 
     manifest.content_scripts[0].matches = matchURLs;
@@ -35,17 +37,16 @@ function makeManifest() {
     return manifest;
 }
 
-function build() {
-    console.log("Generating manifest...");
+function main() {
+    console.log("Updating manifest...");
 
-    const manifest = makeManifest();
+    const manifest = getUpdatedManifest();
     const path = EXTENSION_DIR + "/manifest.json";
 
     console.log("Success, writing file...");
-    fs.writeFileSync(path, JSON.stringify(manifest));
+    fs.writeFileSync(path, JSON.stringify(manifest, null, "     "));
 
-    console.log("Manifest successfully generated at")
-    console.log(path);
+    console.log("Manifest successfully updated");
 }
 
-build();
+main();

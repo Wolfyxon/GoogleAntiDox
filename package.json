@@ -3,8 +3,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node generator/build.js",
-    "build:manifest": "node generator/buildManifest.js",
+    "updateManifest": "node scripts/manifest.js",
     "clean": "rm -f *.xpi && rm -f *.sig"
   }
 }
