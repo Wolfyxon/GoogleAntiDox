@@ -22,7 +22,7 @@ async function main() {
         if(metaText) {
             const lines = metaText.innerHTML.split("<br>");
             metaText.innerHTML = lines.slice(1).join("<br>"); // First line is the IP address 
-            
+
             obs.disconnect();
         }
     }

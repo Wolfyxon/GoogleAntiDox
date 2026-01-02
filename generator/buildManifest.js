@@ -1,11 +1,11 @@
 import { GOOGLE_DOMAIN_ENDS } from "./googleDomainEnds.js";
 import * as fs from "fs";
 
-const DIRECTORIES = ["search", "sorry/index"];
-const EXTENSION_DIR = import.meta.dirname + "../extension";
+const DIRECTORIES = ["search", "sorry"];
+const EXTENSION_DIR = import.meta.dirname + "/../extension";
 
 function createMatchURL(domainEnd, directory) {
-    return `*://*.google.${domainEnd}/${directory}/*`;
+    return `*://*.google.${domainEnd}/${directory}*`;
 }
 
 function makeMatchURLs() {
@@ -42,7 +42,7 @@ function build() {
     const path = EXTENSION_DIR + "/manifest.json";
 
     console.log("Success, writing file...");
-    fs.writeFileSync(JSON.stringify(path));
+    fs.writeFileSync(path, JSON.stringify(manifest));
 
     console.log("Manifest successfully generated at")
     console.log(path);
