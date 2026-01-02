@@ -4,6 +4,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "updateManifest": "node scripts/manifest.js",
+    "build": "npm run updateManifest && cd extension && zip -r ../GoogleAntiDox.xpi .",
     "clean": "rm -f *.xpi && rm -f *.sig"
   }
 }
