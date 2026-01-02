@@ -42,7 +42,7 @@ function build() {
     const path = EXTENSION_DIR + "/manifest.json";
 
     console.log("Success, writing file...");
-    fs.writeFileSync(path);
+    fs.writeFileSync(JSON.stringify(path));
 
     console.log("Manifest successfully generated at")
     console.log(path);
