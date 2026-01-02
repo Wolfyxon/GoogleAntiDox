@@ -49,16 +49,6 @@ Should be compatible with Firefox and all Chromium-based browsers.
 6. Done
 
 ## Building
-### Automated
-Install `make` and run
-```
-make
-```
-or
-```
-make build
-```
-
 ### Manual
 Simply archive the *extension* folder in the zip format, then change the extension to `.xpi`.
 
@@ -68,4 +58,10 @@ GoogleAntiDox.xpi
 |_ global
 |_ settings
 |_ manifest.json
+```
+
+### Automated (recommended for development. Linux only)
+Install `node`, `zip` and run
+```
+npm run build
 ```
