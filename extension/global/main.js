@@ -4,12 +4,14 @@ async function main() {
     let mutationObs;
     let footerLocationRemoved = false;
     let directionsRemoved = false;
+    let resultsForRemoved = false;
 
     function run() {
         const mapsBanner = document.querySelector("*[data-ly]");
         const fbar = document.querySelector(".fbar");
         const locationFooterLabel = document.querySelector(".unknown_loc ~ *");
         const directionsWidget = document.querySelector("*[data-attrid='TravelGettingThereFeedback']");
+        const resultsFor = document.querySelector("dynamic-visibility-control div[data-hveid]"); // "Results for <city name>" block
 
         if(!footerLocationRemoved) {
             if(settings.level == "city") {
@@ -43,7 +45,12 @@ async function main() {
             directionsRemoved = true;
         }
 
-        if(footerLocationRemoved && (!mapsBanner || directionsRemoved)) {
+        if(resultsFor) {
+            resultsFor.remove();
+            resultsForRemoved = true;
+        }
+
+        if(footerLocationRemoved && (!mapsBanner || directionsRemoved) && (!resultsFor || resultsForRemoved)) {
             mutationObs.disconnect();
         }
     }
