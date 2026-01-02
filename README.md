@@ -7,11 +7,10 @@ Should be compatible with Firefox and all Chromium-based browsers.
 > [!IMPORTANT]
 > This extension is not guaranteed to work if Google changes their code. If it doesn't work, open an issue ASAP!
 
-## Features
-- [x] Hiding location from the footer
-- [x] Hiding the directions widget
-- [x] Hiding immediately (before the page fully loads)
-- [ ] Random location mode
+## Where the location is hidden
+- "Results for &lt;city name&gt; (+) Use precise location"
+- Directions to places
+- Page footer
 
 ## Screenshots
 
