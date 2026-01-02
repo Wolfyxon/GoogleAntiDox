@@ -32,8 +32,7 @@ function getUpdatedManifest() {
     const matchURLs = makeMatchURLs();
 
     manifest.content_scripts[0].matches = matchURLs;
-    manifest.host_permissions = matchURLs;
-
+    
     return manifest;
 }
 
