@@ -7,10 +7,11 @@ Should be compatible with Firefox and all Chromium-based browsers.
 > [!IMPORTANT]
 > This extension is not guaranteed to work if Google changes their code. If it doesn't work, open an issue ASAP!
 
-## Where the location is hidden
+## What's hidden
+- Your location on the footer
 - "Results for &lt;city name&gt; (+) Use precise location"
-- Directions to places
-- Page footer
+- Directions widget that sometimes appears when searching for places
+- Your IP address on the captcha page
 
 ## Screenshots
 
