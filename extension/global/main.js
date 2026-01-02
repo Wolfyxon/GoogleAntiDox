@@ -7,6 +7,28 @@ async function main() {
     let resultsForRemoved = false;
 
     function run() {
+        if(document.querySelector(".g-recaptcha")) {
+            runCaptchaPage();
+        } else {
+            runNormalPage();
+        }
+    }
+
+    // "Our systems have detected unusual traffic from your computer network." page
+    function runCaptchaPage() {
+        // the block that displays the IP address, time and URL.
+        const metaText = document.querySelector("#infoDiv ~ * ~ *");
+
+        if(metaText) {
+            const lines = metaText.innerHTML.split("<br>");
+            metaText.innerHTML = lines.slice(1).join("<br>"); // First line is the IP address 
+            
+            obs.disconnect();
+        }
+    }
+
+    // Normal Google search
+    function runNormalPage() {
         const mapsBanner = document.querySelector("*[data-ly]");
         const fbar = document.querySelector(".fbar");
         const locationFooterLabel = document.querySelector(".unknown_loc ~ *");
