@@ -1,0 +1,10 @@
+{
+  "name": "googleantidox",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node generator/build.js",
+    "build:manifest": "node generator/buildManifest.js",
+    "clean": "rm -f *.xpi && rm -f *.sig"
+  }
+}
