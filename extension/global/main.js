@@ -53,17 +53,27 @@ async function main() {
         }
 
         if(!directionsRemoved && directionsWidget) {
-            directionsWidget.parentElement.innerHTML = `
-                <div class="googleantidox-hidden-directions">
-                    <div>
-                        <b>Directions hidden to protect your privacy.</b>
-                    </div>
-                    <div style="font-size: 80%">
-                        GoogleAntiDox
-                    </div>
-                </div>
-            `;
+            const widgetParent = directionsWidget.parentElement;
 
+            const container = document.createElement("div");
+            const mainText = document.createElement("div");
+            const smallText = document.createElement("div");
+
+            mainText.innerText = "Directions hidden to protect your privacy";
+            mainText.classList.add("main-text");
+
+            smallText.innerText = "GoogleAntiDox";
+            smallText.classList.add("small-text");
+
+            container.classList.add("googleantidox-hidden-directions");
+            container.append(mainText, smallText);
+
+            for(const child of widgetParent.children) {
+                child.remove();
+            }
+
+            widgetParent.append(container);
+            
             directionsRemoved = true;
         }
 
