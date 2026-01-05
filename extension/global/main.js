@@ -2,6 +2,8 @@ async function main() {
     const settings = await Settings.get();
 
     let mutationObs;
+
+    let pageFullyLoaded = false;
     let footerLocationRemoved = false;
     let directionsRemoved = false;
     let resultsForRemoved = false;
@@ -36,15 +38,12 @@ async function main() {
         const resultsFor = document.querySelector("dynamic-visibility-control div[data-hveid]"); // "Results for <city name>" block
 
         if(!footerLocationRemoved) {
-            if(settings.level == "city") {
-                if(locationFooterLabel) {
-                    locationFooterLabel.innerText = " ";
-                    footerLocationRemoved = true;
-                } else if(fbar) {
-                    fbar.remove();
-                    footerLocationRemoved = true;
-                }
-            } else {
+            if(locationFooterLabel) {
+                locationFooterLabel.innerText = " ";
+                footerLocationRemoved = true;
+            }
+
+            if(settings.level == "country" || (!locationFooterLabel && pageFullyLoaded) ) {
                 if(fbar) {
                     fbar.remove();
                     footerLocationRemoved = true;
@@ -73,7 +72,7 @@ async function main() {
             }
 
             widgetParent.append(container);
-            
+
             directionsRemoved = true;
         }
 
@@ -95,7 +94,10 @@ async function main() {
         subtree: true
     });
 
-    window.addEventListener("load", run);
+    window.addEventListener("load", () => {
+        pageFullyLoaded = true;
+        run();
+    });
 }
 
 main();
