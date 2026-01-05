@@ -28,15 +28,26 @@ section {
     margin-bottom: 10px;
 }
 
-
 label:has(input[type="radio"]) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    min-height: 2em;
+    font-size: 100%;
     background: #2c2d2e;
-    display: inline-block;
     padding: 5px;
     flex: 1;
     transition: 0.1s;
     cursor: pointer;
     opacity: 0.8;
+}
+
+@media all and (orientation: portrait) {
+    label:has(input[type="radio"]) {
+        font-size: 150%;
+    }
 }
 
 label:has(input[type="radio"]):hover {
@@ -53,10 +64,12 @@ label:has(input[type="radio"]:disabled) {
 }
 
 input[type="radio"] {
+    margin: 0;
+    font-size: 100%;
     appearance: none;
     background: transparent;
-    width: 1em;
-    height: 1em;
+    width: 0.9em;
+    height: 0.9em;
     border-radius: 100%;
     border: 2px solid white;
     transition: 0.1s;
