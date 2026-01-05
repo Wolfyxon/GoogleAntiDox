@@ -7,9 +7,10 @@ async function main() {
     let footerLocationRemoved = false;
     let directionsRemoved = false;
     let resultsForRemoved = false;
+    let ipRemoved = false;
 
     function run() {
-        if(document.querySelector(".g-recaptcha")) {
+        if(document.querySelector("#captcha-form")) {
             runCaptchaPage();
         } else {
             runNormalPage();
@@ -18,14 +19,21 @@ async function main() {
 
     // "Our systems have detected unusual traffic from your computer network." page
     function runCaptchaPage() {
-        // the block that displays the IP address, time and URL.
-        const metaText = document.querySelector("#infoDiv ~ * ~ *");
+        const metaText = document.querySelector("#captcha-form ~ div > :last-child");
 
-        if(metaText) {
-            const lines = metaText.innerHTML.split("<br>");
-            metaText.innerHTML = lines.slice(1).join("<br>"); // First line is the IP address 
+        if(!ipRemoved && metaText) {
+            const prevText = metaText.innerText;
+            metaText.innerText = "";
 
-            obs.disconnect();
+            // First line is the IP address
+            for(const line of prevText.split("\n").slice(1)) {
+                const div = document.createElement("div");
+                div.innerText = line;
+                metaText.append(div);
+            }
+
+            ipRemoved = true;
+            mutationObs.disconnect();
         }
     }
 
@@ -87,10 +95,10 @@ async function main() {
     }
 
     mutationObs = new MutationObserver(run);
-
+    
     mutationObs.observe(document, {
         attributes: true, 
-        childList: false,
+        childList: true,
         subtree: true
     });
 
@@ -98,6 +106,8 @@ async function main() {
         pageFullyLoaded = true;
         run();
     });
+
+    run();
 }
 
 main();
