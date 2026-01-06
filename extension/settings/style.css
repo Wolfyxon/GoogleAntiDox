@@ -44,9 +44,9 @@ label:has(input[type="radio"]) {
     opacity: 0.8;
 }
 
-@media all and (orientation: portrait) {
+@media screen and (max-width: 500px){
     label:has(input[type="radio"]) {
-        font-size: 150%;
+        font-size: 125%;
     }
 }
 
