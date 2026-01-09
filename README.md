@@ -2,7 +2,9 @@
 A browser extension that removes things that give off your location in Google search.
 Prevents you from accidentally leaking sensitive information when making screenshots.
 
-Should be compatible with Firefox and all Chromium-based browsers.
+Should be compatible with Firefox and all Chromium-based browsers (requires manual installation at the moment).
+
+**[Install for Firefox](https://addons.mozilla.org/en-US/firefox/addon/googleantidox/)**
 
 > [!IMPORTANT]
 > This extension is not guaranteed to work if Google changes their code. If it doesn't work, open an issue ASAP!
@@ -20,15 +22,7 @@ Should be compatible with Firefox and all Chromium-based browsers.
 ![](.github/screenshots/settings.png)
 
 
-## Installing
-
-### From an extension store
-
-- **Firefox** - Soon available.
-- **Chrome** - You have to install it manually. Google requires you to publicly disclose your full name and address on the Chrome Web Store and I'm not comfortable with that.
-
-## Manual
-
+## Manual installation
 ### Chromium (Chrome, Edge, Brave, Opera)
 1. Download and extract the source code
 2. Open your browser and go to `chrome://extensions`
